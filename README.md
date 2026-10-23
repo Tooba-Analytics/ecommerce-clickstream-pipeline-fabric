@@ -183,6 +183,17 @@ SELECT
 FROM dbo.silver_global_clicks
 GROUP BY country_code, product_category;
 ```
+---
+
+## 📊 Live Executive Power BI Dashboard (Direct Lake Mode)
+
+![Enterprise Fraud & FinOps Dashboard](powerbi_dashboard.png)
+
+The analytical views created in the Gold layer are connected directly to **Power BI via Direct Lake Mode** (Zero-Copy architecture, eliminating import schedules). This executive-level dashboard surfaces real-time cross-border clickstream performance, regional revenue metrics, and velocity fraud alerts:
+
+- **Total Revenue Tracking:** Real-time USD normalized revenue aggregation ($61.33K+).
+- **Velocity Fraud Alerts:** Instant visualization of high-risk suspicious anomalies (impossible travel under 10 seconds) highlighted via dynamic red status conditional formatting.
+- **FinOps & Regional Distribution:** Granular breakdown of total event clicks and average order values across product categories and country codes (US, IN, GB, DE).
 
 ---
 
