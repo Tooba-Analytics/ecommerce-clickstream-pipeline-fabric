@@ -1,0 +1,37 @@
+name: CI/CD Pipeline - Data Infrastructure Validation
+
+on:
+  push:
+    branches: [ "main" ]
+  pull_request:
+    branches: [ "main" ]
+
+jobs:
+  validate-and-lint:
+    runs-on: ubuntu-latest
+
+    steps:
+    - name: Checkout Repository
+      uses: actions/checkout@v3
+
+    - name: Set up Python Environment
+      uses: actions/checkout@v3
+      with:
+        python-version: '3.10'
+
+    - name: Install Dependencies
+      run: |
+        python -m pip install --upgrade pip
+        pip install azure-storage-filedatalake faker pandas flake8
+
+    - name: Code Linting & Syntax Check
+      run: |
+        # Python syntax errors ya code standards test karein
+        flake8 . --count --select=E9,F63,F7,F82 --show-source --statistics
+        flake8 . --count --exit-zero --max-complexity=10 --max-line-length=127 --statistics
+
+    - name: Validate Pipeline Files & Scripts
+      run: |
+        echo "Validating core data engineering artifacts..."
+        test -f generate_clickstream.py && echo "Data generator script verified."
+        test -f fraud_detection.sql && echo "T-SQL Fraud analytics script verified."
