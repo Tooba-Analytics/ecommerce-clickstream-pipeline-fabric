@@ -282,3 +282,8 @@ spark.sql("VACUUM 'abfss://Ecommerce_Clickstream_Analytics@onelake.dfs.fabric.mi
 * **Zero Plaintext Credentials**: All platform authentication protocols route strictly through environment variables or Azure Key Vault secrets.
 * **Immutable Compliance**: Personal Identifiable Information (PII) is cryptographically isolated before persisting to disk.
 * **Storage Optimization**: Automatic Delta table compaction reduces overhead from tiny-file problems inherent in high-velocity streaming workloads.
+
+---
+
+### 🔄 CI/CD & DevOps Automation
+- **GitHub Actions Integration:** Automated syntax linting (`flake8`) and file structure validation triggered on every `push` or `pull_request` to the `main` branch (`.github/workflows/deploy.yml`).
